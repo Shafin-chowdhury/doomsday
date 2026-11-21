@@ -16,7 +16,6 @@ export default function RewatchPlanView({
 
   return (
     <div className="space-y-6">
-      {/* Target Selector & Summary Card */}
       <section className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
@@ -44,7 +43,6 @@ export default function RewatchPlanView({
           </div>
         </div>
 
-        {/* Stats Row */}
         {rewatchPlan && (
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="rounded-xl bg-slate-950/90 border border-slate-800 p-4">
@@ -77,7 +75,6 @@ export default function RewatchPlanView({
           </div>
         )}
 
-        {/* Progress Bar */}
         {rewatchPlan && (
           <div className="space-y-2">
             <div className="flex justify-between text-xs text-slate-400">
@@ -96,7 +93,6 @@ export default function RewatchPlanView({
         )}
       </section>
 
-      {/* Ordered Sequence List */}
       {rewatchPlan && (
         <section className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6">
           <h3 className="text-base font-semibold text-white mb-4">

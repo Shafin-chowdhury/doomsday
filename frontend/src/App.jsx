@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
-// import MoviesView from "./components/movieView";
-// import RewatchPlanView from "./components/rewatchplanView";
-// import BookingView from "./components/bookingView";
 import MoviesView from "./componants/movieView";
 import RewatchPlanView from "./componants/rewatchplanView";
 import BookingView from "./componants/bookingView";
 
 const API_BASE = "http://localhost:4000/api";
 
-// Put 2 or 3 poster images inside frontend/public/posters/
 const POSTERS = [
   "/posters/avengers.jpg",
   "/posters/ironmann.jpeg",
@@ -22,11 +18,9 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
-  // Rewatch plan state
   const [targetMovieId, setTargetMovieId] = useState("avengers-doomsday");
   const [rewatchPlan, setRewatchPlan] = useState(null);
 
-  // Booking state
   const [selectedCinemaId, setSelectedCinemaId] = useState("cine-1");
   const [groupSize, setGroupSize] = useState("6");
   const [bookingQuote, setBookingQuote] = useState(null);
@@ -188,7 +182,6 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-slate-950 text-slate-100 overflow-hidden">
-      {/* 2-3 Avengers Movie Posters Background Collage */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0 grid grid-cols-1 sm:grid-cols-3 gap-2 opacity-60"
@@ -210,16 +203,12 @@ export default function App() {
           </div>
         ))}
       </div>
-
-      {/* Dark readability overlay */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 z-0 bg-slate-950/65"
       />
 
-      {/* Main App Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        {/* Header */}
         <header className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-6">
           <div>
             <div className="inline-flex items-center gap-2 text-2xl font-semibold uppercase tracking-wider text-amber-400 mb-1">
@@ -233,7 +222,6 @@ export default function App() {
             </p>
           </div>
 
-          {/* Navigation Tabs */}
           <nav className="flex items-center gap-1.5 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 self-start">
             {tabs.map((tab) => {
               const active = activeTab === tab.id;
@@ -258,7 +246,6 @@ export default function App() {
           </nav>
         </header>
 
-        {/* Global Error / Validation Alert */}
         {errorMsg && (
           <div className="mb-6 flex items-start justify-between gap-4 rounded-2xl bg-rose-950/80 border border-rose-500/40 px-4 py-3.5 text-sm text-rose-200">
             <span>{errorMsg}</span>
@@ -272,7 +259,6 @@ export default function App() {
           </div>
         )}
 
-        {/* Content */}
         {loading ? (
           <div className="rounded-2xl bg-slate-900/80 border border-slate-800 p-12 text-center text-sm text-slate-400">
             Loading Doomsday Ready...

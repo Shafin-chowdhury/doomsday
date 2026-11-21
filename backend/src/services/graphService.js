@@ -1,5 +1,3 @@
-// backend/src/services/graphService.js
-
 function buildMovieMap(movies) {
   const map = new Map();
   for (const movie of movies) {
@@ -8,19 +6,14 @@ function buildMovieMap(movies) {
   return map;
 }
 
-/**
- * Checks if setting `proposedPrereqIds` as prerequisites for `movieId`
- * creates a cycle (either self-loop or indirect cycle through ancestors).
- */
+
 function hasCycle(movies, movieId, proposedPrereqIds = []) {
   const movieMap = buildMovieMap(movies);
 
-  // Direct self-dependency check
   if (movieId && proposedPrereqIds.includes(movieId)) {
     return true;
   }
 
-  // Simulate updated prerequisites in a temporary map
   const tempPrereqs = new Map();
   for (const [id, movie] of movieMap.entries()) {
     tempPrereqs.set(id, [...(movie.prerequisites || [])]);
@@ -29,8 +22,6 @@ function hasCycle(movies, movieId, proposedPrereqIds = []) {
     tempPrereqs.set(movieId, [...proposedPrereqIds]);
   }
 
-  // If `movieId` is already in the graph, check if any proposed prerequisite
-  // can reach `movieId` going backwards through prerequisites.
   if (movieId) {
     const visited = new Set();
 
@@ -55,13 +46,11 @@ function hasCycle(movies, movieId, proposedPrereqIds = []) {
     }
   }
 
-  // Also check if the overall graph has any cycle using 3-state DFS
-  // 0 = unvisited, 1 = visiting (on stack), 2 = visited
   const state = new Map();
 
   function dfs(id) {
     const currentState = state.get(id) || 0;
-    if (currentState === 1) return true; // Back-edge found -> cycle
+    if (currentState === 1) return true; 
     if (currentState === 2) return false;
 
     state.set(id, 1);
@@ -80,10 +69,7 @@ function hasCycle(movies, movieId, proposedPrereqIds = []) {
   return false;
 }
 
-/**
- * Returns all ancestor prerequisites of `targetMovieId` in valid watch order
- * (prerequisites appear before movies that depend on them), excluding `targetMovieId`.
- */
+
 function getRewatchPlan(movies, targetMovieId) {
   const movieMap = buildMovieMap(movies);
   const targetMovie = movieMap.get(targetMovieId);
@@ -92,7 +78,6 @@ function getRewatchPlan(movies, targetMovieId) {
     return null;
   }
 
-  // Step 1: Collect all ancestor IDs (excluding the target movie itself)
   const ancestorIds = new Set();
 
   function collectAncestors(currentId) {
@@ -109,8 +94,6 @@ function getRewatchPlan(movies, targetMovieId) {
 
   collectAncestors(targetMovieId);
 
-  // Step 2: Post-order DFS over ancestors so every prerequisite is visited
-  // before the movie that requires it.
   const visited = new Set();
   const orderedMovies = [];
 

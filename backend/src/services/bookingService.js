@@ -44,7 +44,7 @@ function calculateOptimalBundles(bundleSizes, groupSize) {
     };
   }
 
-  // Reconstruct counts per bundle size
+
   const countsMap = new Map();
   let current = groupSize;
   while (current > 0) {
@@ -53,7 +53,6 @@ function calculateOptimalBundles(bundleSizes, groupSize) {
     current -= size;
   }
 
-  // Sort larger bundle sizes first for readable quote display
   const breakdown = Array.from(countsMap.entries())
     .sort((a, b) => b[0] - a[0])
     .map(([bundleSize, count]) => ({

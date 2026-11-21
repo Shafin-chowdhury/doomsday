@@ -17,7 +17,6 @@ function slugifyId(text) {
   return `${base || "item"}-${crypto.randomBytes(3).toString("hex")}`;
 }
 
-// --- MOVIES ---
 
 router.get("/movies", (req, res) => {
   res.json(movies);
@@ -161,8 +160,6 @@ router.get("/movies/:id/rewatch-order", (req, res) => {
   }
   return res.json(plan);
 });
-
-// --- CINEMAS & BOOKING ---
 
 router.get("/cinemas", (req, res) => {
   res.json(cinemas);

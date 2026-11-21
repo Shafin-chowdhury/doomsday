@@ -41,7 +41,6 @@ export default function BookingView({
 
   return (
     <div className="space-y-8">
-      {/* Watch-Party Bundle Calculator */}
       <section className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
         <div>
           <h2 className="text-lg font-semibold text-white">Opening-Night Watch Party Quote</h2>
@@ -107,7 +106,6 @@ export default function BookingView({
           </div>
         )}
 
-        {/* Quote Result Box */}
         {bookingQuote && (
           <div className="pt-2">
             {!bookingQuote.possible ? (
@@ -160,7 +158,6 @@ export default function BookingView({
         )}
       </section>
 
-      {/* Add Cinema Form */}
       <section className="bg-slate-900/60 border border-slate-800 rounded-2xl p-6">
         <h3 className="text-base font-semibold text-white mb-1">Add a New Cinema</h3>
         <p className="text-xs text-slate-400 mb-4">
